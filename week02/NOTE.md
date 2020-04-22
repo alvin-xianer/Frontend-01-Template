@@ -1,1 +1,3 @@
-# 每周总结可以写在这里
+# 总结在 xmind 或者图片
+
+![images](./note/second.png);
