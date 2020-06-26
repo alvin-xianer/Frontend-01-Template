@@ -128,7 +128,7 @@
             let cllection = new BinaryHeap([start], (a, b) => distance(a) - distance(b));
 
             con.children[end[1] * 100 + end[0]].style.backgroundColor = 'red'
-            con.children[start[1] * 100 + start[0]].style.backgroundColor = 'rgba(255, 255, 59, .7)'
+            con.children[start[1] * 100 + start[0]].style.backgroundColor = '#fff'
             map[start[1] * 100 + start[0]] = 2
 
             async function insert([x, y], pre) {
@@ -136,7 +136,7 @@
                 if (x < 0 || y < 0 || x >= 100 || y >= 100) return;
                 map[100 * y + x] = pre;
                 if (!(x === end[0] && y === end[1])) {
-                    con.children[y * 100 + x].style.backgroundColor = '#c5cf60'
+                    con.children[y * 100 + x].style.backgroundColor = '#000'
                 }
                 await sleep(5)
                 cllection.insert([x, y])
@@ -161,12 +161,6 @@
                 await insert([x + 1, y], [x, y]) // 右
                 await insert([x, y - 1], [x, y]) // 上
                 await insert([x, y + 1], [x, y]) // 下
-
-                // await insert([x - 1, y - 1], [x, y]) // 左上
-                // await insert([x + 1, y - 1], [x, y]) // 右上
-                // await insert([x - 1, y + 1], [x, y]) // 左下
-                // await insert([x + 1, y + 1], [x, y]) // 右下
-
                 if (map[y * 100 + x - 1] !== 1 && map[(y - 1) * 100 + x] !== 1) {
                     await insert([x - 1, y - 1], [x, y]) // 左上
                 }
